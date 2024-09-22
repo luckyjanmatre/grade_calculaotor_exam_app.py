@@ -1,55 +1,55 @@
 import streamlit as st
 
 # Set page config with a hacker-themed emoji icon
-st.set_page_config(page_title=" Grade Calculator", page_icon="💻", layout="centered")
+st.set_page_config(page_title="Grade Calculator", page_icon="💻", layout="centered")
 
-# Custom CSS for hacker theme
+# Custom CSS for blue and green theme
 st.markdown(
     """
     <style>
     body {
-        background-color: black;
+        background-color: #001f3f;  /* Dark blue background */
         font-family: 'Courier New', monospace;
     }
     .main {
-        background-color: black;
+        background-color: #001f3f;  /* Dark blue background */
     }
     h1 {
-        color: #00FF00;
+        color: #00FF00;  /* Neon green title */
         text-align: center;
         font-family: 'Courier New', monospace;
         font-size: 30px;
         text-shadow: 0px 0px 5px #00FF00;
     }
     .stNumberInput > div > div > input {
-        background-color: #333333;
-        color: #00FF00;
+        background-color: #0074D9;  /* Bright blue input background */
+        color: #00FF00;  /* Neon green text */
         font-family: 'Courier New', monospace;
-        border: 2px solid #00FF00;
+        border: 2px solid #00FF00;  /* Neon green border */
     }
     .stButton button {
-        background-color: black;
-        color: #00FF00;
+        background-color: #001f3f;  /* Dark blue button background */
+        color: #00FF00;  /* Neon green button text */
         border-radius: 0;
         padding: 10px 20px;
-        border: 2px solid #00FF00;
+        border: 2px solid #00FF00;  /* Neon green button border */
         font-family: 'Courier New', monospace;
         text-shadow: 0px 0px 5px #00FF00;
     }
     .stButton button:hover {
-        background-color: #333333;
+        background-color: #0074D9;  /* Bright blue button on hover */
         color: #00FF00;
     }
     .stNumberInput div {
         font-family: 'Courier New', monospace;
-        color: #00FF00;
+        color: #00FF00;  /* Neon green text */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title with hacker theme
+# Title with blue and green theme
 st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades
