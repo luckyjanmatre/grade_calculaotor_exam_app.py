@@ -1,58 +1,55 @@
 import streamlit as st
 
-# Set page config with a blue and green theme
-st.set_page_config(page_title="Grade Calculator", page_icon="📘", layout="centered")
+# Set page config with a hacker-themed emoji icon
+st.set_page_config(page_title=" Grade Calculator", page_icon="💻", layout="centered")
 
-# Custom CSS for a simple blue and green theme
+# Custom CSS for hacker theme
 st.markdown(
     """
     <style>
     body {
-        background-color: white;  /* Simple white background */
-        font-family: 'Arial', sans-serif;
+        background-color: black;
+        font-family: 'Courier New', monospace;
     }
     .main {
-        background-color: white;
-        padding: 20px;
+        background-color: black;
     }
     h1 {
-        color: #0066cc;  /* Solid blue */
+        color: #00FF00;
         text-align: center;
-        font-family: 'Arial', sans-serif;
-        font-size: 28px;
-        margin-bottom: 30px;
+        font-family: 'Courier New', monospace;
+        font-size: 30px;
+        text-shadow: 0px 0px 5px #00FF00;
     }
     .stNumberInput > div > div > input {
-        background-color: #e6f7ff;  /* Light blue background for input fields */
-        color: black;
-        font-family: 'Arial', sans-serif;
-        border: 1px solid #0066cc;  /* Solid blue border */
-        padding: 8px;
-        width: 100%;
-        border-radius: 0px;  /* No rounded corners */
+        background-color: #333333;
+        color: #00FF00;
+        font-family: 'Courier New', monospace;
+        border: 2px solid #00FF00;
     }
     .stButton button {
-        background-color: #28a745;  /* Solid green button */
-        color: white;
+        background-color: black;
+        color: #00FF00;
+        border-radius: 0;
         padding: 10px 20px;
-        border: none;
-        font-family: 'Arial', sans-serif;
-        border-radius: 0px;  /* No rounded corners */
+        border: 2px solid #00FF00;
+        font-family: 'Courier New', monospace;
+        text-shadow: 0px 0px 5px #00FF00;
     }
     .stButton button:hover {
-        background-color: #218838;  /* Darker green on hover */
+        background-color: #333333;
+        color: #00FF00;
     }
     .stNumberInput div {
-        font-family: 'Arial', sans-serif;
-        color: black;
-        margin-bottom: 15px;  /* Spacing between input fields */
+        font-family: 'Courier New', monospace;
+        color: #00FF00;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title with blue and green theme
+# Title with hacker theme
 st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades
@@ -70,20 +67,16 @@ def calculate_midterm_final(prelim_grade, target_grade):
 
     return midterm_needed, final_needed
 
-# Input fields with straightforward design
-st.write("### Student Information")
-
-absences = st.number_input("Number of Absences:", min_value=0, step=1)
+# Input fields
+absences = st.number_input("Enter number of absences: ", min_value=0, step=1)
 
 if absences >= 4:
     st.write("💀 *FAILED due to absences.*")
 else:
-    st.write("### Grade Inputs")
-    
-    prelim_exam = st.number_input("Prelim Exam Grade (0-100):", 0.0, 100.0)
-    quizzes = st.number_input("Quizzes Grade (0-100):", 0.0, 100.0)
-    requirements = st.number_input("Requirements Grade (0-100):", 0.0, 100.0)
-    recitation = st.number_input("Recitation Grade (0-100):", 0.0, 100.0)
+    prelim_exam = st.number_input("Enter Prelim Exam Grade (0-100): ", 0.0, 100.0)
+    quizzes = st.number_input("Enter Quizzes Grade (0-100): ", 0.0, 100.0)
+    requirements = st.number_input("Enter Requirements Grade (0-100): ", 0.0, 100.0)
+    recitation = st.number_input("Enter Recitation Grade (0-100): ", 0.0, 100.0)
 
     # Attendance calculation
     attendance = 100 - (absences * 10)
@@ -95,7 +88,7 @@ else:
     prelim_grade = (0.6 * prelim_exam) + (0.1 * attendance) + (0.3 * class_standing)
 
     # Display calculated Prelim Grade
-    st.write(f"**Prelim Grade:** {prelim_grade:.2f}")
+    st.write(f"*Prelim Grade:* {prelim_grade:.2f}")
 
     # Calculate required midterm and finals to pass or achieve Dean's Lister
     target_pass = 75
