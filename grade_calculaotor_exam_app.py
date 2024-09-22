@@ -1,25 +1,25 @@
 import streamlit as st
 
-# Set page configuration with a new icon and centered layout
+# Set page configuration with blue-themed centered layout
 st.set_page_config(page_title="Grade Calculator", layout="centered")
 
-# Inject modern custom CSS for a sleek theme
+# Inject modern custom CSS for a blue-themed design
 st.markdown(
     """
     <style>
     body {
-        background-color: #f0f2f6;
+        background-color: #e3f2fd;
         font-family: 'Arial', sans-serif;
     }
     .stApp {
-        background-color: #f0f2f6;
+        background-color: #e3f2fd;
         padding: 20px;
         border-radius: 10px;
         max-width: 800px;
         margin: auto;
     }
     h1 {
-        color: #007BFF;
+        color: #0d47a1;
         text-align: center;
         font-size: 36px;
         font-family: 'Arial', sans-serif;
@@ -27,14 +27,14 @@ st.markdown(
     }
     .stNumberInput input {
         background-color: #ffffff;
-        color: #333;
+        color: #0d47a1;
         font-family: 'Arial', sans-serif;
-        border: 1px solid #007BFF;
+        border: 1px solid #1976d2;
         border-radius: 5px;
         padding: 10px;
     }
     .stButton button {
-        background-color: #007BFF;
+        background-color: #1976d2;
         color: white;
         border: none;
         padding: 10px 20px;
@@ -44,14 +44,14 @@ st.markdown(
         margin-top: 10px;
     }
     .stButton button:hover {
-        background-color: #0056b3;
+        background-color: #0d47a1;
     }
     .stNumberInput div, .stMarkdown {
-        color: #333;
+        color: #0d47a1;
         font-family: 'Arial', sans-serif;
     }
     .result-text {
-        color: #007BFF;
+        color: #0d47a1;
         font-size: 18px;
         margin-top: 20px;
         text-align: center;
@@ -60,7 +60,7 @@ st.markdown(
     """, unsafe_allow_html=True
 )
 
-# New title without the laptop icon
+# Blue-themed title
 st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades based on the prelim grade and target
