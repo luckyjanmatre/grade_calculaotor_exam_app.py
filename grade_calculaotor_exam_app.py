@@ -1,53 +1,67 @@
 import streamlit as st
 
-# Set page configuration with a custom icon and layout
-st.set_page_config(page_title="Grade Calculator", page_icon="💻", layout="centered")
+# Set page configuration with a new icon and centered layout
+st.set_page_config(page_title="Grade Calculator", page_icon="📊", layout="centered")
 
-# Inject custom CSS for a hacker-style theme
+# Inject modern custom CSS for a sleek theme
 st.markdown(
     """
     <style>
     body {
-        background-color: black;
-        font-family: 'Courier New', monospace;
+        background-color: #f0f2f6;
+        font-family: 'Arial', sans-serif;
     }
     .stApp {
-        background-color: black;
+        background-color: #f0f2f6;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: auto;
     }
     h1 {
-        color: #00FF00;
+        color: #007BFF;
         text-align: center;
-        font-size: 30px;
-        font-family: 'Courier New', monospace;
-        text-shadow: 0px 0px 5px #00FF00;
+        font-size: 36px;
+        font-family: 'Arial', sans-serif;
+        margin-bottom: 20px;
     }
     .stNumberInput input {
-        background-color: #333333;
-        color: #00FF00;
-        font-family: 'Courier New', monospace;
-        border: 2px solid #00FF00;
+        background-color: #ffffff;
+        color: #333;
+        font-family: 'Arial', sans-serif;
+        border: 1px solid #007BFF;
+        border-radius: 5px;
+        padding: 10px;
     }
     .stButton button {
-        background-color: black;
-        color: #00FF00;
-        border: 2px solid #00FF00;
+        background-color: #007BFF;
+        color: white;
+        border: none;
         padding: 10px 20px;
-        font-family: 'Courier New', monospace;
-        text-shadow: 0px 0px 5px #00FF00;
+        border-radius: 5px;
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        margin-top: 10px;
     }
     .stButton button:hover {
-        background-color: #333333;
+        background-color: #0056b3;
     }
     .stNumberInput div, .stMarkdown {
-        color: #00FF00;
-        font-family: 'Courier New', monospace;
+        color: #333;
+        font-family: 'Arial', sans-serif;
+    }
+    .result-text {
+        color: #007BFF;
+        font-size: 18px;
+        margin-top: 20px;
+        text-align: center;
     }
     </style>
     """, unsafe_allow_html=True
 )
 
-# Hacker-themed title
-st.title("💻 Grade Calculator")
+# New title with a fresh look
+st.title("📊 Grade Calculator")
 
 # Function to calculate required midterm and final grades based on the prelim grade and target
 def calculate_required_grades(prelim_grade, target_grade):
@@ -62,14 +76,14 @@ def calculate_required_grades(prelim_grade, target_grade):
 
     return midterm_needed, final_needed
 
-# Number of absences input
+# Input fields for absences and grades
 absences = st.number_input("Enter number of absences:", min_value=0, step=1)
 
-# Check for failing due to absences
+# Check for failure due to absences
 if absences >= 4:
-    st.markdown("💀 *FAILED due to absences.*")
+    st.markdown("<p class='result-text'>💀 <strong>FAILED due to absences.</strong></p>", unsafe_allow_html=True)
 else:
-    # Input for various grade components
+    # Inputs for grade components
     prelim_exam = st.number_input("Enter Prelim Exam Grade (0-100):", 0.0, 100.0)
     quizzes = st.number_input("Enter Quizzes Grade (0-100):", 0.0, 100.0)
     requirements = st.number_input("Enter Requirements Grade (0-100):", 0.0, 100.0)
@@ -85,7 +99,7 @@ else:
     prelim_grade = 0.6 * prelim_exam + 0.1 * attendance + 0.3 * class_standing
 
     # Display the Prelim Grade
-    st.markdown(f"*Prelim Grade:* **{prelim_grade:.2f}**")
+    st.markdown(f"<p class='result-text'>Prelim Grade: <strong>{prelim_grade:.2f}</strong></p>", unsafe_allow_html=True)
 
     # Define target grades for passing and Dean's Lister
     target_pass, target_deans = 75, 90
@@ -94,10 +108,12 @@ else:
     midterm_needed_pass, final_needed_pass = calculate_required_grades(prelim_grade, target_pass)
     midterm_needed_deans, final_needed_deans = calculate_required_grades(prelim_grade, target_deans)
 
-    # Display the required grades to pass
-    st.markdown(f"To pass with a 75% overall grade, you need a Midterm grade of **{midterm_needed_pass:.2f}** "
-                f"and a Final grade of **{final_needed_pass:.2f}**.")
+    # Display required grades to pass
+    st.markdown(f"<p class='result-text'>To pass with a 75% overall grade, you need:</p>"
+                f"<p class='result-text'><strong>Midterm grade:</strong> {midterm_needed_pass:.2f}, "
+                f"<strong>Final grade:</strong> {final_needed_pass:.2f}</p>", unsafe_allow_html=True)
 
-    # Display the required grades for Dean's Lister
-    st.markdown(f"To achieve Dean's Lister status with a 90% overall grade, you need a Midterm grade of "
-                f"**{midterm_needed_deans:.2f}** and a Final grade of **{final_needed_deans:.2f}**.")
+    # Display required grades for Dean's Lister
+    st.markdown(f"<p class='result-text'>To achieve Dean's Lister status with a 90% overall grade, you need:</p>"
+                f"<p class='result-text'><strong>Midterm grade:</strong> {midterm_needed_deans:.2f}, "
+                f"<strong>Final grade:</strong> {final_needed_deans:.2f}</p>", unsafe_allow_html=True)
