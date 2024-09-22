@@ -1,56 +1,60 @@
 import streamlit as st
 
-# Set page config with new emoji icon
+# Set page config with minimalistic emoji icon
 st.set_page_config(page_title="Grade Calculator", page_icon="📘", layout="centered")
 
-# Custom CSS for blue and green theme
+# Custom CSS for Google Docs-like theme
 st.markdown(
     """
     <style>
     body {
-        background-color: #e6f7ff;  /* Light blue background */
+        background-color: #f9f9f9;  /* Light gray background like Google Docs */
         font-family: 'Arial', sans-serif;
     }
     .main {
-        background-color: #e6f7ff;
+        background-color: #f9f9f9;
+        padding: 20px;
     }
     h1 {
-        color: #006600;  /* Dark green */
+        color: #1a73e8;  /* Google blue */
         text-align: center;
         font-family: 'Arial', sans-serif;
         font-size: 28px;
-        text-shadow: 0px 0px 3px #009933;  /* Green glow */
+        margin-bottom: 30px;
     }
     .stNumberInput > div > div > input {
-        background-color: #ccf2ff;  /* Light blue input field */
-        color: #004d4d;  /* Dark teal text */
+        background-color: white;  /* White input field */
+        color: black;
         font-family: 'Arial', sans-serif;
-        border: 2px solid #006666;  /* Teal border */
-        border-radius: 5px;
-        padding: 8px;
+        border: 1px solid #dadce0;  /* Light gray border */
+        border-radius: 6px;  /* Rounded corners */
+        padding: 10px;
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.1);  /* Light shadow */
+        width: 100%;
     }
     .stButton button {
-        background-color: #004d4d;  /* Dark teal button */
+        background-color: #1a73e8;  /* Google blue button */
         color: white;
-        border-radius: 8px;
+        border-radius: 6px;
         padding: 10px 20px;
-        border: 2px solid #006666;  /* Teal border */
+        border: none;
         font-family: 'Arial', sans-serif;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.2);  /* Light button shadow */
     }
     .stButton button:hover {
-        background-color: #009999;  /* Lighter teal on hover */
-        color: white;
+        background-color: #185abc;  /* Darker blue on hover */
     }
     .stNumberInput div {
         font-family: 'Arial', sans-serif;
-        color: #004d4d;  /* Dark teal label */
+        color: #5f6368;  /* Subtle gray label */
+        margin-bottom: 20px;  /* Spacing between input fields */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title with new blue and green theme
+# Title with clean Google Docs-like theme
 st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades
@@ -68,20 +72,20 @@ def calculate_midterm_final(prelim_grade, target_grade):
 
     return midterm_needed, final_needed
 
-# Input fields with improved layout
-col1, col2 = st.columns(2)
+# Input fields with clean Google Docs-like layout
+st.write("### Student Information")
 
-with col1:
-    absences = st.number_input("Enter number of absences: ", min_value=0, step=1)
+absences = st.number_input("Number of Absences:", min_value=0, step=1)
 
 if absences >= 4:
     st.write("💀 *FAILED due to absences.*")
 else:
-    with col2:
-        prelim_exam = st.number_input("Enter Prelim Exam Grade (0-100): ", 0.0, 100.0)
-        quizzes = st.number_input("Enter Quizzes Grade (0-100): ", 0.0, 100.0)
-        requirements = st.number_input("Enter Requirements Grade (0-100): ", 0.0, 100.0)
-        recitation = st.number_input("Enter Recitation Grade (0-100): ", 0.0, 100.0)
+    st.write("### Grade Inputs")
+    
+    prelim_exam = st.number_input("Prelim Exam Grade (0-100):", 0.0, 100.0)
+    quizzes = st.number_input("Quizzes Grade (0-100):", 0.0, 100.0)
+    requirements = st.number_input("Requirements Grade (0-100):", 0.0, 100.0)
+    recitation = st.number_input("Recitation Grade (0-100):", 0.0, 100.0)
 
     # Attendance calculation
     attendance = 100 - (absences * 10)
@@ -93,7 +97,7 @@ else:
     prelim_grade = (0.6 * prelim_exam) + (0.1 * attendance) + (0.3 * class_standing)
 
     # Display calculated Prelim Grade
-    st.write(f"*Prelim Grade:* {prelim_grade:.2f}")
+    st.write(f"**Prelim Grade:** {prelim_grade:.2f}")
 
     # Calculate required midterm and finals to pass or achieve Dean's Lister
     target_pass = 75
