@@ -1,55 +1,55 @@
 import streamlit as st
 
-# Set page config with a hacker-themed emoji icon
+# Set page config with a blue-themed emoji icon
 st.set_page_config(page_title="Grade Calculator", page_icon="💻", layout="centered")
 
-# Custom CSS for blue and green theme
+# Custom CSS for blue theme
 st.markdown(
     """
     <style>
     body {
-        background-color: #001f3f;  /* Dark blue background */
+        background-color: #1E1E1E; /* Dark background */
         font-family: 'Courier New', monospace;
     }
     .main {
-        background-color: #001f3f;  /* Dark blue background */
+        background-color: #1E1E1E;
     }
     h1 {
-        color: #00FF00;  /* Neon green title */
+        color: #00BFFF; /* Deep Sky Blue */
         text-align: center;
         font-family: 'Courier New', monospace;
         font-size: 30px;
-        text-shadow: 0px 0px 5px #00FF00;
+        text-shadow: 0px 0px 5px #00BFFF;
     }
     .stNumberInput > div > div > input {
-        background-color: #0074D9;  /* Bright blue input background */
-        color: #00FF00;  /* Neon green text */
+        background-color: #333333;
+        color: #00BFFF;
         font-family: 'Courier New', monospace;
-        border: 2px solid #00FF00;  /* Neon green border */
+        border: 2px solid #00BFFF;
     }
     .stButton button {
-        background-color: #001f3f;  /* Dark blue button background */
-        color: #00FF00;  /* Neon green button text */
+        background-color: #1E1E1E;
+        color: #00BFFF;
         border-radius: 0;
         padding: 10px 20px;
-        border: 2px solid #00FF00;  /* Neon green button border */
+        border: 2px solid #00BFFF;
         font-family: 'Courier New', monospace;
-        text-shadow: 0px 0px 5px #00FF00;
+        text-shadow: 0px 0px 5px #00BFFF;
     }
     .stButton button:hover {
-        background-color: #0074D9;  /* Bright blue button on hover */
-        color: #00FF00;
+        background-color: #333333;
+        color: #00BFFF;
     }
     .stNumberInput div {
         font-family: 'Courier New', monospace;
-        color: #00FF00;  /* Neon green text */
+        color: #00BFFF;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title with blue and green theme
+# Title with blue theme
 st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades
