@@ -1,55 +1,56 @@
 import streamlit as st
 
-# Set page config with a hacker-themed emoji icon
-st.set_page_config(page_title=" Grade Calculator", page_icon="💻", layout="centered")
+# Set page config with new emoji icon
+st.set_page_config(page_title="Grade Calculator", page_icon="📘", layout="centered")
 
-# Custom CSS for hacker theme
+# Custom CSS for blue and green theme
 st.markdown(
     """
     <style>
     body {
-        background-color: black;
-        font-family: 'Courier New', monospace;
+        background-color: #e6f7ff;  /* Light blue background */
+        font-family: 'Arial', sans-serif;
     }
     .main {
-        background-color: black;
+        background-color: #e6f7ff;
     }
     h1 {
-        color: #00FF00;
+        color: #006600;  /* Dark green */
         text-align: center;
-        font-family: 'Courier New', monospace;
-        font-size: 30px;
-        text-shadow: 0px 0px 5px #00FF00;
+        font-family: 'Arial', sans-serif;
+        font-size: 28px;
+        text-shadow: 0px 0px 3px #009933;  /* Green glow */
     }
     .stNumberInput > div > div > input {
-        background-color: #333333;
-        color: #00FF00;
-        font-family: 'Courier New', monospace;
-        border: 2px solid #00FF00;
+        background-color: #ccf2ff;  /* Light blue input field */
+        color: #004d4d;  /* Dark teal text */
+        font-family: 'Arial', sans-serif;
+        border: 2px solid #006666;  /* Teal border */
+        border-radius: 5px;
+        padding: 8px;
     }
     .stButton button {
-        background-color: black;
-        color: #00FF00;
-        border-radius: 0;
+        background-color: #004d4d;  /* Dark teal button */
+        color: white;
+        border-radius: 8px;
         padding: 10px 20px;
-        border: 2px solid #00FF00;
-        font-family: 'Courier New', monospace;
-        text-shadow: 0px 0px 5px #00FF00;
+        border: 2px solid #006666;  /* Teal border */
+        font-family: 'Arial', sans-serif;
     }
     .stButton button:hover {
-        background-color: #333333;
-        color: #00FF00;
+        background-color: #009999;  /* Lighter teal on hover */
+        color: white;
     }
     .stNumberInput div {
-        font-family: 'Courier New', monospace;
-        color: #00FF00;
+        font-family: 'Arial', sans-serif;
+        color: #004d4d;  /* Dark teal label */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title with hacker theme
+# Title with new blue and green theme
 st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades
@@ -67,16 +68,20 @@ def calculate_midterm_final(prelim_grade, target_grade):
 
     return midterm_needed, final_needed
 
-# Input fields
-absences = st.number_input("Enter number of absences: ", min_value=0, step=1)
+# Input fields with improved layout
+col1, col2 = st.columns(2)
+
+with col1:
+    absences = st.number_input("Enter number of absences: ", min_value=0, step=1)
 
 if absences >= 4:
     st.write("💀 *FAILED due to absences.*")
 else:
-    prelim_exam = st.number_input("Enter Prelim Exam Grade (0-100): ", 0.0, 100.0)
-    quizzes = st.number_input("Enter Quizzes Grade (0-100): ", 0.0, 100.0)
-    requirements = st.number_input("Enter Requirements Grade (0-100): ", 0.0, 100.0)
-    recitation = st.number_input("Enter Recitation Grade (0-100): ", 0.0, 100.0)
+    with col2:
+        prelim_exam = st.number_input("Enter Prelim Exam Grade (0-100): ", 0.0, 100.0)
+        quizzes = st.number_input("Enter Quizzes Grade (0-100): ", 0.0, 100.0)
+        requirements = st.number_input("Enter Requirements Grade (0-100): ", 0.0, 100.0)
+        recitation = st.number_input("Enter Recitation Grade (0-100): ", 0.0, 100.0)
 
     # Attendance calculation
     attendance = 100 - (absences * 10)
