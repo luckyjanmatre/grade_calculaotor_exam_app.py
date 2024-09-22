@@ -3,7 +3,7 @@ import streamlit as st
 # Set page configuration with blue-themed centered layout
 st.set_page_config(page_title="Grade Calculator", layout="centered")
 
-# Inject modern custom CSS for a blue-themed design
+# Inject modern custom CSS for a blue-themed design with updated font arrangements
 st.markdown(
     """
     <style>
@@ -55,6 +55,23 @@ st.markdown(
         font-size: 18px;
         margin-top: 20px;
         text-align: center;
+        padding: 10px 0;
+        border-top: 2px solid #1976d2;
+    }
+    .important-text {
+        color: #0d47a1;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        padding: 10px 0;
+        border-top: 2px solid #1976d2;
+    }
+    .details-text {
+        color: #0d47a1;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 10px;
     }
     </style>
     """, unsafe_allow_html=True
@@ -81,7 +98,7 @@ absences = st.number_input("Enter number of absences:", min_value=0, step=1)
 
 # Check for failure due to absences
 if absences >= 4:
-    st.markdown("<p class='result-text'>💀 <strong>FAILED due to absences.</strong></p>", unsafe_allow_html=True)
+    st.markdown("<p class='important-text'>💀 <strong>FAILED due to absences.</strong></p>", unsafe_allow_html=True)
 else:
     # Inputs for grade components
     prelim_exam = st.number_input("Enter Prelim Exam Grade (0-100):", 0.0, 100.0)
@@ -99,7 +116,7 @@ else:
     prelim_grade = 0.6 * prelim_exam + 0.1 * attendance + 0.3 * class_standing
 
     # Display the Prelim Grade
-    st.markdown(f"<p class='result-text'>Prelim Grade: <strong>{prelim_grade:.2f}</strong></p>", unsafe_allow_html=True)
+    st.markdown(f"<p class='important-text'>Prelim Grade: <strong>{prelim_grade:.2f}</strong></p>", unsafe_allow_html=True)
 
     # Define target grades for passing and Dean's Lister
     target_pass, target_deans = 75, 90
@@ -109,11 +126,11 @@ else:
     midterm_needed_deans, final_needed_deans = calculate_required_grades(prelim_grade, target_deans)
 
     # Display required grades to pass
-    st.markdown(f"<p class='result-text'>To pass with a 75% overall grade, you need:</p>"
-                f"<p class='result-text'><strong>Midterm grade:</strong> {midterm_needed_pass:.2f}, "
+    st.markdown(f"<p class='details-text'>To pass with a 75% overall grade, you need:</p>"
+                f"<p class='details-text'><strong>Midterm grade:</strong> {midterm_needed_pass:.2f}, "
                 f"<strong>Final grade:</strong> {final_needed_pass:.2f}</p>", unsafe_allow_html=True)
 
     # Display required grades for Dean's Lister
-    st.markdown(f"<p class='result-text'>To achieve Dean's Lister status with a 90% overall grade, you need:</p>"
-                f"<p class='result-text'><strong>Midterm grade:</strong> {midterm_needed_deans:.2f}, "
+    st.markdown(f"<p class='details-text'>To achieve Dean's Lister status with a 90% overall grade, you need:</p>"
+                f"<p class='details-text'><strong>Midterm grade:</strong> {midterm_needed_deans:.2f}, "
                 f"<strong>Final grade:</strong> {final_needed_deans:.2f}</p>", unsafe_allow_html=True)
