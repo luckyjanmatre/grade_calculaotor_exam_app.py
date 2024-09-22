@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Set page configuration with a new icon and centered layout
-st.set_page_config(page_title="Grade Calculator", page_icon="📊", layout="centered")
+st.set_page_config(page_title="Grade Calculator", layout="centered")
 
 # Inject modern custom CSS for a sleek theme
 st.markdown(
@@ -60,8 +60,8 @@ st.markdown(
     """, unsafe_allow_html=True
 )
 
-# New title with a fresh look
-st.title("📊 Grade Calculator")
+# New title without the laptop icon
+st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades based on the prelim grade and target
 def calculate_required_grades(prelim_grade, target_grade):
