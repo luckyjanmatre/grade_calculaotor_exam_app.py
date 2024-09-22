@@ -1,60 +1,58 @@
 import streamlit as st
 
-# Set page config with minimalistic emoji icon
+# Set page config with a blue and green theme
 st.set_page_config(page_title="Grade Calculator", page_icon="📘", layout="centered")
 
-# Custom CSS for Google Docs-like theme
+# Custom CSS for a simple blue and green theme
 st.markdown(
     """
     <style>
     body {
-        background-color: #f9f9f9;  /* Light gray background like Google Docs */
+        background-color: white;  /* Simple white background */
         font-family: 'Arial', sans-serif;
     }
     .main {
-        background-color: #f9f9f9;
+        background-color: white;
         padding: 20px;
     }
     h1 {
-        color: #1a73e8;  /* Google blue */
+        color: #0066cc;  /* Solid blue */
         text-align: center;
         font-family: 'Arial', sans-serif;
         font-size: 28px;
         margin-bottom: 30px;
     }
     .stNumberInput > div > div > input {
-        background-color: white;  /* White input field */
+        background-color: #e6f7ff;  /* Light blue background for input fields */
         color: black;
         font-family: 'Arial', sans-serif;
-        border: 1px solid #dadce0;  /* Light gray border */
-        border-radius: 6px;  /* Rounded corners */
-        padding: 10px;
-        box-shadow: 0px 1px 2px rgba(0,0,0,0.1);  /* Light shadow */
+        border: 1px solid #0066cc;  /* Solid blue border */
+        padding: 8px;
         width: 100%;
+        border-radius: 0px;  /* No rounded corners */
     }
     .stButton button {
-        background-color: #1a73e8;  /* Google blue button */
+        background-color: #28a745;  /* Solid green button */
         color: white;
-        border-radius: 6px;
         padding: 10px 20px;
         border: none;
         font-family: 'Arial', sans-serif;
-        box-shadow: 0px 1px 3px rgba(0,0,0,0.2);  /* Light button shadow */
+        border-radius: 0px;  /* No rounded corners */
     }
     .stButton button:hover {
-        background-color: #185abc;  /* Darker blue on hover */
+        background-color: #218838;  /* Darker green on hover */
     }
     .stNumberInput div {
         font-family: 'Arial', sans-serif;
-        color: #5f6368;  /* Subtle gray label */
-        margin-bottom: 20px;  /* Spacing between input fields */
+        color: black;
+        margin-bottom: 15px;  /* Spacing between input fields */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title with clean Google Docs-like theme
+# Title with blue and green theme
 st.title("Grade Calculator")
 
 # Function to calculate required midterm and final grades
@@ -72,7 +70,7 @@ def calculate_midterm_final(prelim_grade, target_grade):
 
     return midterm_needed, final_needed
 
-# Input fields with clean Google Docs-like layout
+# Input fields with straightforward design
 st.write("### Student Information")
 
 absences = st.number_input("Number of Absences:", min_value=0, step=1)
