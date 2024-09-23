@@ -3,46 +3,52 @@ import streamlit as st
 # Set page configuration without an icon
 st.set_page_config(page_title="Grade Calculator", layout="centered")
 
-# Apply custom styles for a terminal-like theme
+# Apply custom styles for a blue theme
 st.markdown(
     """
     <style>
     body {
-        background-color: black;
-        font-family: 'Courier New', monospace;
+        background-color: #001f3f;
+        font-family: 'Arial', sans-serif;
     }
     .main {
-        background-color: black;
+        background-color: #001f3f;
     }
     h1 {
-        color: #00FF00;
+        color: #00BFFF;
         text-align: center;
-        font-family: 'Courier New', monospace;
         font-size: 30px;
-        text-shadow: 0px 0px 5px #00FF00;
+        text-shadow: 0px 0px 5px #00BFFF;
     }
     .stNumberInput > div > div > input {
-        background-color: #333333;
-        color: #00FF00;
-        font-family: 'Courier New', monospace;
-        border: 2px solid #00FF00;
+        background-color: #00264d;
+        color: #00BFFF;
+        font-family: 'Arial', sans-serif;
+        border: 2px solid #00BFFF;
+        border-radius: 5px;
+        padding: 10px;
     }
     .stButton button {
-        background-color: black;
-        color: #00FF00;
-        border-radius: 0;
+        background-color: #001f3f;
+        color: #00BFFF;
+        border-radius: 5px;
         padding: 10px 20px;
-        border: 2px solid #00FF00;
-        font-family: 'Courier New', monospace;
-        text-shadow: 0px 0px 5px #00FF00;
+        border: 2px solid #00BFFF;
+        font-family: 'Arial', sans-serif;
+        text-shadow: 0px 0px 5px #00BFFF;
+        transition: background-color 0.3s ease;
     }
     .stButton button:hover {
-        background-color: #333333;
-        color: #00FF00;
+        background-color: #003366;
+        color: #ffffff;
     }
     .stNumberInput div {
-        font-family: 'Courier New', monospace;
-        color: #00FF00;
+        font-family: 'Arial', sans-serif;
+        color: #00BFFF;
+    }
+    .stMarkdown p {
+        color: #00BFFF;
+        font-size: 16px;
     }
     </style>
     """,
