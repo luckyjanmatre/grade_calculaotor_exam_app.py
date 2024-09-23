@@ -1,8 +1,7 @@
-
 import streamlit as st
 
-# Set page configuration with a tech-inspired icon
-st.set_page_config(page_title="Grade Calculator", page_icon="🖥️", layout="centered")
+# Set page configuration without an icon
+st.set_page_config(page_title="Grade Calculator", layout="centered")
 
 # Apply custom styles for a terminal-like theme
 st.markdown(
