@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Set page configuration without an icon
-st.set_page_config(page_title="Grade Calculator", layout="centered"
+st.set_page_config(page_title="Grade Calculator", layout="centered")
 
 # Apply custom styles for a blue theme
 st.markdown(
